@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List Filter</title>
+        <style>
+            * 
+            {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            #search 
+            {
+                width: 10%;
+                font-size: 14px; 
+                padding: 10px;
+                border: 1px solid #ddd;
+                margin-bottom: 12px;
+                border-radius: 2px;
+            }
+
+            #list 
+            {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            #list li a 
+            {
+                border: 1px solid #ddd; 
+                margin-top: -1px;
+                margin: 5px;
+                margin-left: 0px;
+                background-color: #f6f6f6;
+                padding: 5px; 
+                text-decoration: none; 
+                font-size: 14px; 
+                color: black; 
+                display: block;
+            }
+
+            #list li a:hover:not(.header) 
+            {
+                background-color: #eee; 
+            }
+        </style>
+    </head>
+
+    <body>
+        <input type="text" id="search" onkeyup="myFunction()" placeholder="Filter List..">
+
+            <ul id="list">
+                <li><a href="#">Apple</a></li>
+                <li><a href="#">Banana</a></li>
+                <li><a href="#">Cherry</a></li>
+                <li><a href="#">Date</a></li>
+                <li><a href="#">Elderberry</a></li>
+            </ul>
+
+        <script>
+            function myFunction() 
+            {
+                // Declare variables
+                var input, filter, ul, li, a, i, txtValue;
+                input = document.getElementById('search');
+                filter = input.value.toUpperCase();
+                ul = document.getElementById("list");
+                li = ul.getElementsByTagName('li');
+            
+                // Loop through all list items, and hide those who don't match the search query
+                for (i = 0; i < li.length; i++) 
+                {
+                    a = li[i].getElementsByTagName("a")[0];
+                    txtValue = a.textContent || a.innerText;
+                    if
+                    (txtValue.toUpperCase().indexOf(filter) > -1) 
+                    {
+                        li[i].style.display = "";
+                    } 
+                    else 
+                    {
+                        li[i].style.display = "none";
+                    }
+                }
+            }
+            </script>
+    </body>
+</html>
